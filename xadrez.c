@@ -1,54 +1,58 @@
-//Inclua a biblioteca
+// Incluindo a biblioteca
 #include <stdio.h>
 
-//Estabeleça a função principal
-int main() {
+// Função recursiva para o movimento da torre
+void moverTorre(int passo, int limite) {
+    if (passo > limite) return;
+    printf("Torre: Direita\n");
+    moverTorre(passo + 1, limite);
+}
 
-//Defina as variáveis
-    int torre = 1, bispo = 1, rainha = 1;
-    int cavalo = 1;
+// Função recursiva com loop aninhado para o movimento do bispo
+void moverBispo(int passo, int limite) {
+    if (passo > limite) return;
 
-//Faça o movimento das peças usando as funções while, do-while e for (Torre, bispo e rainha)
-    while (torre <= 5){
-        printf("Torre: Direita\n");
-        torre++;
-    }
-
-    printf("\n");
-
-    do {
+    for (int i = 1; i <= 1; i++) {
         printf("Bispo: Cima, Direita\n");
-        bispo++;
-    } while (bispo <= 5);
-
-    printf("\n");
-
-    for (rainha; rainha <= 8; rainha++)
-    {
-        printf("Rainha: Esquerda\n");
     }
 
-    printf("\n");
+    moverBispo(passo + 1, limite);
+}
 
-//Para o cavalo, use loops aninhados
-    while (cavalo <= 1)
-    {
-        for (int i = 1; i <= 2; i++)
-        {
-            printf("Cavalo: Baixo\n");
-        }
-        printf("Cavalo: Esquerda\n");
-        cavalo++;
+// Função recursiva para o movimento da rainha
+void moverRainha(int passo, int limite) {
+    if (passo > limite) return;
+    printf("Rainha: Esquerda\n");
+    moverRainha(passo + 1, limite);
+}
+
+// Movimento do cavalo
+void moverCavalo() {
+    for (int i = 1; i <= 2; i++) {  // Duas casas para cima
+        printf("Cavalo: Cima\n");
     }
 
+    for (int j = 1; j <= 1; j++) {  // Uma casa para direita
+        printf("Cavalo: Direita\n");
+    }
+}
+
+int main() {
+    // Torre: direita por 5 casas
+    moverTorre(1, 5);
     printf("\n");
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+    // Bispo: 5 movimentos diagonais
+    moverBispo(1, 5);
+    printf("\n");
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+    // Rainha: esquerda por 8 casas
+    moverRainha(1, 8);
+    printf("\n");
+
+    // Cavalo: Movimento em L
+    moverCavalo();
+    printf("\n");
 
     return 0;
 }
